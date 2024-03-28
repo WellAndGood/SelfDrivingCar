@@ -17,7 +17,8 @@ class Sensor{
                 this.#getReading(
                     this.rays[i],
                     roadBorders,
-                    traffic                )
+                    traffic
+                )
             );
         }
     }
