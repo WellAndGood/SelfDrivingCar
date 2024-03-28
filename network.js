@@ -3,22 +3,21 @@ class NeuralNetwork {
         this.levels = [];
         for (let i = 0; i < neuronCounts.length - 1; i++) {
             this.levels.push(new Level(
-                neuronCounts[i], neuronCounts[i+1]
-            ))
-        };
+                neuronCounts[i], neuronCounts[i + 1]
+            ));
+        }
     }
 
     static feedForward(givenInputs, network) {
-        let outputs = level.feedForward(
+        let outputs = Level.feedForward(
             givenInputs, network.levels[0]);
         for (let i = 1; i < network.levels.length; i++) {
             outputs = Level.feedForward(
-                outputs.network.levels[i]);
+                outputs, network.levels[i]);
         }
         return outputs;
     }
 }
-
 
 class Level {
     constructor(inputCount, outputCount) {
@@ -52,7 +51,7 @@ class Level {
         }
 
         for (let i = 0; i < level.outputs.length; i++) {
-            let sum = 0;
+            let sum = 0
             for (let j = 0; j < level.inputs.length; j++) {
                 sum += level.inputs[j] * level.weights[j][i];
             }
@@ -63,6 +62,7 @@ class Level {
                 level.outputs[i] = 0;
             }
         }
+
         return level.outputs;
     }
 }
